@@ -8,9 +8,9 @@
 
 ## 模块依赖
 
-* [seajs](https://github.com/alipay/arale/tree/master/lib/seajs)
-* [jquery](https://github.com/alipay/arale/tree/master/lib/jquery)
-* [position](https://github.com/alipay/arale/tree/master/lib/position)
+* seajs
+* jquery
+* position
 
 
 ## 使用说明
@@ -71,17 +71,6 @@ shim.sync(); // 在 target 显示之后，再同步 shim 的显示。
 ### destroy `shim.destroy()`
 
 实例方法，销毁 iframe 等。
-
-
-## 演示页面
-
-在 ie6 下访问 [examples/iframe-shim.html](http://aralejs.org/docs/iframe-shim/examples/)
-
-
-## 测试用例
-
-* <http://aralejs.org/lib/iframe-shim/tests/runner.html>
-
 
 ## 交流讨论
 

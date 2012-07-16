@@ -1,7 +1,7 @@
 define(function(require) {
 
-    var Shim = require('#iframe-shim/0.9.2/iframe-shim'),
-        $ = require('jquery');
+    var Shim = require('../src/iframe-shim'),
+        $ = require('$');
 
     describe('iframe-shim', function() {
 
