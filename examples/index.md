@@ -63,7 +63,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 遮罩会根据 DOM 的宽高进行调节
 
 <div id="example2" class="cell">
-    <div class="overlay" style="top:100px;">
+    <div class="overlay" style="top:50px;">
         .overlay
     </div>
     <p>
