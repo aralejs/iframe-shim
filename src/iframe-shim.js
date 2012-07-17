@@ -70,7 +70,7 @@ define(function(require, exports, module) {
 
     function createIframe() {
         return $('<iframe>', {
-            src: 'javascript:', // 不加的话，https 下会弹警告
+            src: 'javascript:\'\'', // 不加的话，https 下会弹警告
             frameborder: 0,
             css: {
                 display: 'none',
