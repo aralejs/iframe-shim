@@ -16,6 +16,9 @@ define(function(require, exports, module) {
         var target = this.target;
         var iframe = this.iframe;
 
+        // 如果未传 target 则不处理
+        if (!target.length) return this;
+
         var height = target.outerHeight();
         var width = target.outerWidth();
 
@@ -26,12 +29,11 @@ define(function(require, exports, module) {
             iframe && iframe.hide();
         } else {
             // 第一次显示时才创建：as lazy as possible
-            iframe || (iframe = this.iframe = createIframe());
+            iframe || (iframe = this.iframe = createIframe(target));
 
             iframe.css({
                 'height': height,
-                'width': width,
-                'zIndex': parseInt(target.css('zIndex')) - 1 || 0
+                'width': width
             });
 
             Position.pin(iframe[0], target[0]);
@@ -68,7 +70,9 @@ define(function(require, exports, module) {
 
     // Helpers
 
-    function createIframe() {
+    // 在 target 之前创建 iframe，这样就没有 z-index 问题
+    // iframe 永远在 target 下方
+    function createIframe(target) {
         return $('<iframe>', {
             src: 'javascript:\'\'', // 不加的话，https 下会弹警告
             frameborder: 0,
@@ -78,7 +82,7 @@ define(function(require, exports, module) {
                 opacity: 0,
                 position: 'absolute'
             }
-        }).appendTo(document.body);
+        }).insertBefore(target);
     }
 
 });
