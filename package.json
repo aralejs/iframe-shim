@@ -1,11 +1,11 @@
 {
     "name": "iframe-shim",
-    "version": "0.9.4",
+    "version": "0.9.3",
     "output": {
-        "iframe-shim.js": ["iframe-shim.js"]
+        "iframe-shim.js": "."
     },
     "dependencies": {
-        "$": "jquery/1.7.2/jquery",
+        "$": "$",
         "position": "position/0.9.2/position"
     },
     "tests": ["iframe-shim"]

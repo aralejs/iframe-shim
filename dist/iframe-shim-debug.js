@@ -1,6 +1,6 @@
-define("#iframe-shim/0.9.4/iframe-shim-debug", ["#position/0.9.2/position-debug", "#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
+define("#iframe-shim/0.9.3/iframe-shim-debug", ["$-debug", "#position/0.9.2/position-debug"], function(require, exports, module) {
 
-    var $ = require('#jquery/1.7.2/jquery-debug');
+    var $ = require('$-debug');
     var Position = require('#position/0.9.2/position-debug');
 
 
