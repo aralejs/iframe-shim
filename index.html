@@ -1,36 +1,44 @@
-<!DOCTYPE HTML>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Iframe-Shim</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
-        <link rel="stylesheet" href="http://aralejs.github.com/assets/base.css" />
-        <link rel="stylesheet" href="http://aralejs.github.com/assets/style.css" />
-        <link rel="stylesheet" href="http://aralejs.github.com/assets/pygments.css" />
-        <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.0/sea.js"></script>
-        
-        
-        <!--[if lt IE 9]>
-        <script type="text/javascript" src="http://aralejs.github.com/assets/html5shiv.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        <header id="header">
-            <h1 id="brand"><a href="http://aralejs.org/">Arale</a></h1>
-            <nav id="nav" role="navigation">
-                <a href="./">Iframe-Shim</a>
-                <a href="./examples/">Examples</a>
-                
-                
-                <a id="nav-test" href="./tests/runner.html">Tests</a>
-                
-            </nav>
-        </header>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+<title>Iframe-Shim</title>
+<link rel="stylesheet" href="http://aralejs.org/assets/base.css">
+<link rel="stylesheet" href="http://aralejs.org/assets/style.css">
+<link rel="stylesheet" href="http://aralejs.org/assets/pygments.css">
+<link rel="stylesheet" href="http://aralejs.org/assets/fontawesome/css/font-awesome.css">
+<script src="http://seajs.org/dist/sea.js"></script>
 
-        <div id="main">
-            <div class="container">
 
-<h1>iframe-shim</h1>
+<!--[if lt IE 9]>
+<script src="http://aralejs.org/assets/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body>
+<header id="header">
+    <div class="container fn-clear">
+
+    <a href="./"  class="current">Iframe-Shim</a>
+    <a href="./examples/" >Examples</a>
+    
+    
+    <a id="nav-test" target="_blank" href="./tests/runner.html">Tests</a>
+    
+
+
+        <nav role="navigation" id="nav">
+            <a class="icon-home" title="Home" href="/" id="logo">Home</a>
+            <a class="icon-github" href="https://github.com/aralejs/iframe-shim">Code</a>
+        </nav>
+    </div>
+</header>
+
+<div id="main">
+    <div class="container">
+
+<div class="markdown-body">
+    <h1>iframe-shim</h1>
 <p>工具类，在 IE6 下生成 iframe 遮挡 select 和 object。此组件对开发者透明，开发者无需再判断浏览器版本。</p>
 
 <hr/>
@@ -46,7 +54,8 @@
 <h2>使用说明</h2>
 
 <h3>Instantialize <code>new Shim(target)</code></h3>
-<p>实例化对象，实例化后会生成一个 iframe 插入到 body 中。需要手动调用 <code>sync</code> 方法同步。</p>
+<p>组件会根据传入的目标元素生成一个实例，实例化后会生成一个 iframe 插入到目标元素前，这样 iframe 的层级永远低于目标元素。</p>
+<p>开发者需要手动调用 <code>sync</code> 方法来同步 iframe 和目标元素。</p>
 <p>如果是 ie6 以外的浏览器只会返回一个空实例，什么都不执行。</p>
 <p>参数 <code>target</code> 是需要被遮挡的目标元素，可以传 <code>DOM Element</code> 或 <code>Selector</code>。</p>
 <div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
@@ -59,7 +68,7 @@
 <p><strong>注意：</strong></p>
 
 <ul>
-<li>iframe 计算的宽高包括 border，例如 width 为 100px，border 为 1px，iframe 的 width 为 102px。</li>
+<li>iframe 的宽高是根据目标元素计算的，目标元素的宽高是包括 border的，例如目标元素的 width 为 100px，border 为 1px，iframe 的 width 为 102px。</li>
 </ul>
 
 <h3>sync <code>shim.sync()</code></h3>
@@ -92,10 +101,10 @@
 <a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
 来提交反馈。</p>
 
+</div>
 
-            </div>
-        </div>
-        <hr class="end" />
-        <a id="github" href="https://github.com/aralejs/iframe-shim" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:999" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-    </body>
+    </div>
+</div>
+<hr class="end">
+</body>
 </html>

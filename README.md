@@ -18,7 +18,9 @@
 
 ### Instantialize `new Shim(target)`
 
-实例化对象，实例化后会生成一个 iframe 插入到 body 中。需要手动调用 `sync` 方法同步。
+组件会根据传入的目标元素生成一个实例，实例化后会生成一个 iframe 插入到目标元素前，这样 iframe 的层级永远低于目标元素。
+
+开发者需要手动调用 `sync` 方法来同步 iframe 和目标元素。
 
 如果是 ie6 以外的浏览器只会返回一个空实例，什么都不执行。
 
@@ -36,7 +38,7 @@ define(function(require, exports, module) {
 
 **注意：**
 
-* iframe 计算的宽高包括 border，例如 width 为 100px，border 为 1px，iframe 的 width 为 102px。
+* iframe 的宽高是根据目标元素计算的，目标元素的宽高是包括 border的，例如目标元素的 width 为 100px，border 为 1px，iframe 的 width 为 102px。
 
 
 ### sync `shim.sync()`
