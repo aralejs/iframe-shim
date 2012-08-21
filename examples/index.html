@@ -6,8 +6,8 @@
 <title>Iframe-Shim</title>
 <link rel="stylesheet" href="http://aralejs.org/assets/base.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/style.css">
-
 <script src="http://seajs.org/dist/sea.js"></script>
+
 <script src="http://aralejs.org/tools/seajs-helper.js"></script>
 
 <!--[if lt IE 9]>
@@ -27,8 +27,8 @@
 
 
         <nav role="navigation" id="nav">
-            <a class="icon-home" title="Home" href="/" id="logo">Home</a>
-            <a class="icon-github" href="https://github.com/aralejs/iframe-shim">Code</a>
+            <a class="icon-home" target="_blank" title="Home" href="/" id="logo">Home</a>
+            <a id="code-link" class="icon-github" target="_blank" href="https://github.com/aralejs/iframe-shim">Code</a>
         </nav>
     </div>
 </header>
@@ -37,9 +37,7 @@
     <div class="container">
 
 <div class="markdown-body">
-    <h1>iframe-shim</h1>
-
-<style>
+    <style>
     .cell {
         position:relative;
     }
@@ -60,8 +58,7 @@
     }
 </style>
 
-<h2>Example</h2>
-<p>正常情况，创建一个遮罩</p>
+<h3>1. 正常情况，创建一个遮罩</h3>
 
 <div id="example1" class="cell">
     <div class="overlay opacity0" style="height:100px;">
@@ -88,19 +85,20 @@
         <input type="text" />
     </p>
 </div>
+
+<script>
+seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+    // example1
+    new Shim('#example1 .overlay').sync();
+});
+</script>
 <div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;../src/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
     <span class="c1">// example1</span>
     <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example1 .overlay&#39;</span><span class="p">).</span><span class="nx">sync</span><span class="p">();</span>
 <span class="p">});</span>
 </pre></div>
 
-<script type="text/javascript">
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
-    // example1
-    new Shim('#example1 .overlay').sync();
-});
-</script>
-<p>遮罩会根据 DOM 的宽高进行调节</p>
+<h3>2. 遮罩会根据 DOM 的宽高进行调节</h3>
 
 <div id="example2" class="cell">
     <div class="overlay" style="top:50px;">
@@ -133,6 +131,24 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     </select>
 
 </div>
+
+<script>
+seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+    //example2
+    var shim2 = new Shim('#example2 .overlay').sync();
+
+    $('#example2 input').blur(function(e){
+        var value = e.currentTarget.value;
+
+        $('#example2 .overlay').css({
+            'height': value,
+            'width': value
+        });
+
+        shim2.sync();
+    });
+});
+</script>
 <div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;../src/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
     <span class="c1">//example2</span>
     <span class="kd">var</span> <span class="nx">shim2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example2 .overlay&#39;</span><span class="p">).</span><span class="nx">sync</span><span class="p">();</span>
@@ -150,24 +166,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 <span class="p">});</span>
 </pre></div>
 
-<script type="text/javascript">
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
-    //example2
-    var shim2 = new Shim('#example2 .overlay').sync();
-
-    $('#example2 input').blur(function(e){
-        var value = e.currentTarget.value;
-
-        $('#example2 .overlay').css({
-            'height': value,
-            'width': value
-        });
-
-        shim2.sync();
-    });
-});
-</script>
-<p>遮罩只会遮盖 border 以及内容部分，margin 则不算</p>
+<h3>3. 遮罩只会遮盖 border 以及内容部分，margin 则不算</h3>
 
 <div id="example3" class="cell">
     <div class="overlay" style="border-width:20px;margin:20px;">
@@ -209,19 +208,20 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     </select>
     </p>
 </div>
+
+<script>
+seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+    // example3
+    new Shim('#example3 .overlay').sync();
+});
+</script>
 <div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;../src/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
     <span class="c1">// example3</span>
     <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example3 .overlay&#39;</span><span class="p">).</span><span class="nx">sync</span><span class="p">();</span>
 <span class="p">});</span>
 </pre></div>
 
-<script type="text/javascript">
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
-    // example3
-    new Shim('#example3 .overlay').sync();
-});
-</script>
-<p>实例化不会生成 iframe，调用 sync 后才会创建 <a href="#" id="example4-create">点我遮罩</a></p>
+<h3>4. 实例化不会生成 iframe，调用 sync 后才会创建 <a href="#" id="example4-create">点我遮罩</a></h3>
 
 <div id="example4" class="cell">
     <div class="overlay">
@@ -250,6 +250,17 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     </select>
 
 </div>
+
+<script>
+seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+    // example4
+    var shim4 = new Shim('#example4 .overlay');
+    $('#example4-create').click(function(e){
+        e.preventDefault();
+        shim4.sync();
+    });
+});
+</script>
 <div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;../src/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
     <span class="c1">// example4</span>
     <span class="kd">var</span> <span class="nx">shim4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example4 .overlay&#39;</span><span class="p">);</span>
@@ -260,17 +271,6 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 <span class="p">});</span>
 </pre></div>
 
-<script type="text/javascript">
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
-    // example4
-    var shim4 = new Shim('#example4 .overlay');
-    $('#example4-create').click(function(e){
-        e.preventDefault();
-        shim4.sync();
-    });
-});
-</script>
-
 </div>
 
     </div>
@@ -278,5 +278,8 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 <hr class="end">
 <link rel="stylesheet" href="http://aralejs.org/assets/pygments.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/fontawesome/css/font-awesome.css">
+<script>
+    seajs.use('http://aralejs.org/tools/nico-helper.js');
+</script>
 </body>
 </html>
