@@ -1,5 +1,3 @@
-# iframe-shim
-
 <style>
     .cell {
         position:relative;
@@ -21,9 +19,7 @@
     }
 </style>
 
-## Example
-
-正常情况，创建一个遮罩
+### 1. 正常情况，创建一个遮罩
 
 <div id="example1" class="cell">
     <div class="overlay opacity0" style="height:100px;">
@@ -52,15 +48,15 @@
 </div>
 
 
-```javascript
+````javascript
 seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     // example1
     new Shim('#example1 .overlay').sync();
 });
-```
+````
 
 
-遮罩会根据 DOM 的宽高进行调节
+### 2. 遮罩会根据 DOM 的宽高进行调节
 
 <div id="example2" class="cell">
     <div class="overlay" style="top:50px;">
@@ -94,7 +90,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 
 </div>
 
-```javascript
+````javascript
 seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     //example2
     var shim2 = new Shim('#example2 .overlay').sync();
@@ -110,9 +106,9 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
         shim2.sync();
     });
 });
-```
+````
 
-遮罩只会遮盖 border 以及内容部分，margin 则不算
+### 3. 遮罩只会遮盖 border 以及内容部分，margin 则不算
 
 <div id="example3" class="cell">
     <div class="overlay" style="border-width:20px;margin:20px;">
@@ -155,14 +151,14 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     </p>
 </div>
 
-```javascript
+````javascript
 seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     // example3
     new Shim('#example3 .overlay').sync();
 });
-```
+````
 
-实例化不会生成 iframe，调用 sync 后才会创建 <a href="#" id="example4-create">点我遮罩</a>
+### 4. 实例化不会生成 iframe，调用 sync 后才会创建 <a href="#" id="example4-create">点我遮罩</a>
 
 <div id="example4" class="cell">
     <div class="overlay">
@@ -192,7 +188,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 
 </div>
 
-```javascript
+````javascript
 seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     // example4
     var shim4 = new Shim('#example4 .overlay');
@@ -201,4 +197,4 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
         shim4.sync();
     });
 });
-```
+````
