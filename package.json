@@ -1,12 +1,22 @@
 {
     "name": "iframe-shim",
-    "version": "0.9.3",
+    "version": "1.0.0",
+    "homepage": "http://aralejs.org/iframe-shim/",
+    "description": "",
+    "author": "popomore <sakura9515@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aralejs/iframe-shim.git"
+    },
+    "bugs": {
+        "url": "https://github.com/aralejs/iframe-shim/issues"
+    },
     "output": {
         "iframe-shim.js": "."
     },
     "dependencies": {
         "$": "$",
-        "position": "position/0.9.2/position"
+        "position": "1.0.0"
     },
     "tests": ["iframe-shim"]
 }
