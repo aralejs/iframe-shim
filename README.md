@@ -5,15 +5,7 @@
 
 ---
 
-
-## 模块依赖
-
-* seajs
-* jquery
-* position
-
-
-## 使用说明
+## API
 
 
 ### Instantialize `new Shim(target)`
@@ -39,7 +31,6 @@ define(function(require, exports, module) {
 **注意：**
 
 * iframe 的宽高是根据目标元素计算的，目标元素的宽高是包括 border的，例如目标元素的 width 为 100px，border 为 1px，iframe 的 width 为 102px。
-
 
 ### sync `shim.sync()`
 
@@ -72,8 +63,4 @@ shim.sync(); // 在 target 显示之后，再同步 shim 的显示。
 
 实例方法，销毁 iframe 等。
 
-## 交流讨论
 
-欢迎创建
-[GitHub Issue](https://github.com/alipay/arale/issues/new)
-来提交反馈。

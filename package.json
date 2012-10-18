@@ -2,7 +2,7 @@
     "name": "iframe-shim",
     "version": "1.1.0",
     "homepage": "http://aralejs.org/iframe-shim/",
-    "description": "",
+    "description": "工具类，在 IE6 下生成 iframe 遮挡 select 和 object。此组件对开发者透明，开发者无需再判断浏览器版本。",
     "author": "popomore <sakura9515@gmail.com>",
     "repository": {
         "type": "git",
