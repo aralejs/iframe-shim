@@ -5,7 +5,7 @@
 
 ---
 
-## API
+## 使用说明
 
 
 ### Instantialize `new Shim(target)`
