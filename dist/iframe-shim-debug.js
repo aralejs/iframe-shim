@@ -1,7 +1,7 @@
-define("#iframe-shim/1.1.0/iframe-shim-debug", ["$-debug", "#position/1.0.0/position-debug"], function(require, exports, module) {
+define("arale/iframe-shim/1.0.0/iframe-shim-debug", ["$-debug", "arale/position/1.0.0/position-debug"], function(require, exports, module) {
 
     var $ = require('$-debug');
-    var Position = require('#position/1.0.0/position-debug');
+    var Position = require('arale/position/1.0.0/position-debug');
 
 
     // target 是需要添加垫片的目标元素，可以传 `DOM Element` 或 `Selector`
