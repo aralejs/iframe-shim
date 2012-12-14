@@ -16,24 +16,24 @@ define(function(require) {
         });
 
         // 测试非 ie6 下返回的空实例
-        test('return empty instance except ie6', function() {
+        it('return empty instance except ie6', function() {
             var target = $('<div></div>').css({'width': '100px', 'height': '100px', 'border': '1px solid #fff'}).appendTo(div);
 
             if (!isIE6) {
                 var iframe = new Shim(target[0]);
                 iframe.sync();
 
-                expect(iframe.iframe).toBeUndefined();
-                expect(iframe.target).toBeUndefined();
+                expect(iframe.iframe).to.be(undefined);
+                expect(iframe.target).to.be(undefined);
 
-                expect(iframe.sync).toBeDefined();
-                expect(iframe.destroy).toBeDefined();
+                expect(iframe.sync).not.to.be(undefined);
+                expect(iframe.destroy).not.to.be(undefined);
             }
 
         });
 
         // 测试 iframe-shim 生成实例正常
-        test('normal initialize ', function() {
+        it('normal initialize ', function() {
             var target = $('<div></div>').css({'width': '100px', 'height': '100px', 'border': '1px solid #fff'}).appendTo(div);
 
             if (isIE6) {
@@ -52,7 +52,7 @@ define(function(require) {
         });
 
         // 测试 sync 函数，修改目标元素宽高和边框，iframe 重新计算
-        test('function sync', function() {
+        it('function sync', function() {
             var target = $('<div></div>').css({'width': '100px', 'height': '100px', 'border': '1px solid #fff'}).appendTo(div);
 
             if (isIE6) {
@@ -67,7 +67,7 @@ define(function(require) {
         });
 
         // 测试当目标元素隐藏的时候sync函数，iframe会隐藏
-        test('function sync when target is hidden', function() {
+        it('function sync when target is hidden', function() {
             var target = $('<div></div>').css({'width': '100px', 'height': '100px', 'border': '1px solid #fff'}).appendTo(div);
 
             if (isIE6) {
@@ -75,41 +75,41 @@ define(function(require) {
 
                 target.css({'width': 0, 'border': 'none'});
                 iframe.sync();
-                expect(iframe.iframe).toBeUndefined();
+                expect(iframe.iframe).to.be(undefined);
 
                 target.css({'width': '10px', 'border': 'none'});
                 iframe.sync();
-                expect(iframe.iframe.css('display') === 'none').toBeFalsy();
+                expect(iframe.iframe.css('display') === 'none').not.to.be.ok();
 
                 target.css({'display': 'none'});
                 iframe.sync();
-                expect(iframe.iframe.css('display')).toBe('none');
+                expect(iframe.iframe.css('display')).to.be('none');
             }
         });
 
         // 测试 destroy 函数
-        test('function destroy', function() {
+        it('function destroy', function() {
             var target = $('<div></div>').css({'width': '100px', 'height': '100px', 'border': '1px solid #fff'}).appendTo(div);
 
             if (isIE6) {
                 var shim = new Shim(target[0]).sync();
                 shim.destroy();
 
-                expect(shim.iframe).toBeUndefined();
-                expect(shim.target).toBeUndefined();
+                expect(shim.iframe).to.be(undefined);
+                expect(shim.target).to.be(undefined);
             }
         });
 
         // 测试 destroy 函数没有调用 sync
-        test('function destroy when sync is not called', function() {
+        it('function destroy when sync is not called', function() {
             var target = $('<div></div>').css({'width': '100px', 'height': '100px', 'border': '1px solid #fff'}).appendTo(div);
 
             if (isIE6) {
                 var shim = new Shim(target[0]);
                 shim.destroy();
 
-                expect(shim.iframe).toBeUndefined();
-                expect(shim.target).toBeUndefined();
+                expect(shim.iframe).to.be(undefined);
+                expect(shim.target).to.be(undefined);
             }
         });
     });

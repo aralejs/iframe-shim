@@ -1,14 +1,47 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
-    <title>Jasmine Runner</title>
-    <script src="http://seajs.org/dist/sea.js"></script>
-    <script src="http://aralejs.org/tools/seajs-helper.js"></script>
-    <script src="http://aralejs.org/tools/jasmine-runner.js"></script>
-    </head>
-    <body>
-    </body>
-</html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Iframe-shim Mocha Runner</title>
+    <link href="../static/css/mocha.css" type="text/css" rel="stylesheet" charset="utf-8">
+    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js"></script>
+    <script src="../static/js/arale-helper.js"></script>
+    <script src="../static/js/es5-safe.js"></script>
+    <script src="../static/js/test-suite.js"></script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script>
+      (function() {
+        mocha.setup('bdd');
+        puerh.use('expect');
+        var data = {"name":"iframe-shim","version":"1.0.0","root":"arale","tag":"utility","homepage":"http://aralejs.org/iframe-shim/","description":"工具类，在 IE6 下生成 iframe 遮挡 select 和 object。此组件对开发者透明，开发者无需再判断浏览器版本。","author":"popomore <sakura9515@gmail.com>","repository":{"type":"git","url":"https://github.com/aralejs/iframe-shim.git"},"bugs":{"url":"https://github.com/aralejs/iframe-shim/issues"},"output":{"iframe-shim.js":"."},"dependencies":{"$":"$","position":"arale/position/1.0.0/position"},"tests":["iframe-shim"]}
+        data.dependencies && (delete data.dependencies['$'])
+        data.devDependencies && (delete data.devDependencies['$'])
 
+        seajs.config({ alias: data.dependencies })
+        seajs.config({ alias: data.devDependencies })
+
+        var tests = data['tests'] || []
+
+        if (tests.length === 0) {
+          tests.push(data.name)
+        }
+
+        var specs = []
+        for (var i = 0; i < tests.length; i++) {
+          specs[i] = './' + tests[i] + '-spec.js'
+        }
+
+        seajs.use(specs, function() {
+          if (window.mochaPhantomJS) {
+            mochaPhantomJS.run()
+          } else {
+            mocha.run()
+          }
+        })
+      })();
+    </script>
+  </body>
+</html>
