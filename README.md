@@ -3,7 +3,7 @@
 
 ---
 
-工具类，在 IE6 下生成 iframe 遮挡 select 和 object。此组件对开发者透明，开发者无需再判断浏览器版本。
+工具类，在 IE6 下生成 iframe 遮挡 select。此组件对开发者透明，开发者无需再判断浏览器版本。
 
 <span style="font-size:120px;line-height:0.4;color:rgb(255, 140, 42);font-family:Menlo;">☂</span>
 
