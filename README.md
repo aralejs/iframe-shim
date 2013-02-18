@@ -1,7 +1,9 @@
 
-# iframe-shim
+# 
 
 ---
+
+[![Build Status](https://secure.travis-ci.org/aralejs/iframe-shim.png)](https://travis-ci.org/aralejs/iframe-shim)
 
 工具类，在 IE6 下生成 iframe 遮挡 select。此组件对开发者透明，开发者无需再判断浏览器版本。
 
