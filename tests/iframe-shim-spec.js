@@ -5,7 +5,7 @@ define(function(require) {
 
     describe('iframe-shim', function() {
 
-        var div, isIE6 = $.browser.msie && $.browser.version == 6.0;
+        var div, isIE6 = $.browser.msie && $.browser.version === '6.0';
 
         beforeEach(function() {
             div = $('<div></div>').appendTo(document.body);
@@ -43,10 +43,10 @@ define(function(require) {
                 var iframeOffset = iframe.iframe.offset();
                 var elementOffset = iframe.target.offset();
 
-                expect(iframe.iframe.css('height')).toBe('102px');
-                expect(iframe.iframe.css('width')).toBe('102px');
-                expect(iframeOffset.left).toBe(elementOffset.left);
-                expect(iframeOffset.top).toBe(elementOffset.top);
+                expect(iframe.iframe.css('height')).to.be('102px');
+                expect(iframe.iframe.css('width')).to.be('102px');
+                expect(iframeOffset.left).to.be(elementOffset.left);
+                expect(iframeOffset.top).to.be(elementOffset.top);
             }
 
         });
@@ -61,8 +61,8 @@ define(function(require) {
 
                 iframe.sync();
 
-                expect(iframe.iframe.css('height')).toBe('210px');
-                expect(iframe.iframe.css('width')).toBe('410px');
+                expect(iframe.iframe.css('height')).to.be('210px');
+                expect(iframe.iframe.css('width')).to.be('410px');
             }
         });
 
@@ -110,6 +110,27 @@ define(function(require) {
 
                 expect(shim.iframe).to.be(undefined);
                 expect(shim.target).to.be(undefined);
+            }
+        });
+
+        // 测试 destroy 函数没有调用 sync
+        it('should pass #2', function() {
+            var target1 = $('<div></div>').css({'width': '100px', 'height': '100px'}).appendTo(div);
+            var target2 = $('<div></div>').css({'width': '100px', 'height': '100px', 'zIndex': 1}).appendTo(div);
+            var target3 = $('<div></div>').css({'width': '100px', 'height': '100px', 'zIndex': 2}).appendTo(div);
+
+            if (isIE6) {
+                var shim1 = new Shim(target1[0]);
+                shim1.sync();
+                expect(shim1.iframe[0].style.zIndex).to.be(0);
+
+                var shim2 = new Shim(target2[0]);
+                shim2.sync();
+                expect(shim2.iframe[0].style.zIndex).to.be(0);
+
+                var shim3 = new Shim(target3[0]);
+                shim3.sync();
+                expect(shim3.iframe[0].style.zIndex).to.be(1);
             }
         });
     });
