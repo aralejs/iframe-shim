@@ -15,7 +15,7 @@
         height:50px;
         border:1px solid green;
         background:#fff;
-        z-index:10;
+
     }
 
     .opacity0{
@@ -191,7 +191,6 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     <select>
         <option value="option"></option>
     </select>
-
 </div>
 
 ````javascript
@@ -202,5 +201,37 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
         e.preventDefault();
         shim4.sync();
     });
+});
+````
+
+### 5. 如果 select 或者父级元素设置了 z-index
+
+<div id="example5" class="cell">
+    <div class="overlay opacity0" style="height:50px;z-index:10">
+        .overlay
+    </div>
+    <p style="position:relative; z-index:2;">
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    </p>
+</div>
+
+````javascript
+seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+    // example1
+    new Shim('#example5 .overlay').sync();
 });
 ````

@@ -10,7 +10,6 @@ define(function(require, exports, module) {
         this.target = $(target).eq(0);
     }
 
-
     // 根据目标元素计算 iframe 的显隐、宽高、定位
     Shim.prototype.sync = function() {
         var target = this.target;
@@ -43,7 +42,6 @@ define(function(require, exports, module) {
         return this;
     };
 
-
     // 销毁 iframe 等
     Shim.prototype.destroy = function() {
         if (this.iframe) {
@@ -53,13 +51,11 @@ define(function(require, exports, module) {
         delete this.target;
     };
 
-
-    if ($.browser.msie && $.browser.version == 6.0) {
+    if ($.browser.msie && $.browser.version === '6.0') {
         module.exports = Shim;
     } else {
         // 除了 IE6 都返回空函数
-        function Noop() {
-        }
+        function Noop() {}
 
         Noop.prototype.sync = Noop;
         Noop.prototype.destroy = Noop;
@@ -67,21 +63,28 @@ define(function(require, exports, module) {
         module.exports = Noop;
     }
 
-
     // Helpers
 
     // 在 target 之前创建 iframe，这样就没有 z-index 问题
     // iframe 永远在 target 下方
     function createIframe(target) {
+        var css = {
+            display: 'none',
+            border: 'none',
+            opacity: 0,
+            position: 'absolute'
+        };
+
+        // 如果 target 存在 zIndex 则设置
+        var zIndex = target.css('zIndex');
+        if (zIndex && zIndex > 0) {
+            css.zIndex = zIndex - 1;
+        }
+
         return $('<iframe>', {
             src: 'javascript:\'\'', // 不加的话，https 下会弹警告
             frameborder: 0,
-            css: {
-                display: 'none',
-                border: 'none',
-                opacity: 0,
-                position: 'absolute'
-            }
+            css: css
         }).insertBefore(target);
     }
 
