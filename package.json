@@ -22,12 +22,17 @@
     "iframe-shim.js": ["iframe-shim.js"]
   },
   "spm": {
-    "output": {
-      "iframe-shim.js": ["iframe-shim.js"]
-    },
+    "output": ["iframe-shim.js"],
     "alias": {
       "$": "$",
       "position": "arale/position/1.0.0/position"
+    },
+    "devAlias": {
+      "mocha": "gallery/mocha/1.9.0/mocha",
+      "expect": "gallery/expect/0.2.0/expect"
+    },
+    "engines": {
+      "seajs": "seajs/seajs/2.0.0/sea"
     }
   },
   "tests": ["iframe-shim"]

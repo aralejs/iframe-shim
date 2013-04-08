@@ -1,6 +1,7 @@
 define(function(require) {
 
-    var Shim = require('../src/iframe-shim'),
+    var Shim = require('iframe-shim'),
+        expect = require('expect'),
         $ = require('$');
 
     describe('iframe-shim', function() {
