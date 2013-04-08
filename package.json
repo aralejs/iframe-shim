@@ -1,6 +1,5 @@
 {
   "family": "arale",
-  "root": "arale",
   "name": "iframe-shim",
   "version": "1.0.1",
   "keywords": ["utility", "ie6", "shim", "dom"],
@@ -13,13 +12,6 @@
   },
   "bugs": {
     "url": "https://github.com/aralejs/iframe-shim/issues"
-  },
-  "dependencies": {
-      "$": "$",
-      "position": "arale/position/1.0.0/position"
-  },
-  "output": {
-    "iframe-shim.js": ["iframe-shim.js"]
   },
   "spm": {
     "output": ["iframe-shim.js"],
@@ -34,6 +26,5 @@
     "engines": {
       "seajs": "seajs/seajs/2.0.0/sea"
     }
-  },
-  "tests": ["iframe-shim"]
+  }
 }
