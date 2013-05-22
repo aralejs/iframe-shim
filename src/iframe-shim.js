@@ -57,7 +57,7 @@ define(function(require, exports, module) {
         // 除了 IE6 都返回空函数
         function Noop() {}
 
-        Noop.prototype.sync = Noop;
+        Noop.prototype.sync = function() {return this};
         Noop.prototype.destroy = Noop;
 
         module.exports = Noop;

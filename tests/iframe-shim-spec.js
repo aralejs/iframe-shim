@@ -134,5 +134,12 @@ define(function(require) {
                 expect(shim3.iframe[0].style.zIndex).to.be(1);
             }
         });
+
+        it('sync should chained call', function() {
+            var target = $('<div></div>').css({'width': '100px', 'height': '100px'}).appendTo(div);
+            var shim = new Shim(target[0]);
+
+            expect(shim.sync()).to.be(shim);
+        })
     });
 });
