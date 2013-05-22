@@ -23,8 +23,6 @@
       "mocha": "gallery/mocha/1.9.0/mocha",
       "expect": "gallery/expect/0.2.0/expect"
     },
-    "engines": {
-      "seajs": "seajs/seajs/2.0.0/sea"
-    }
+    "engines": {}
   }
 }

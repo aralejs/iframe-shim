@@ -99,7 +99,8 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 ````javascript
 seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     //example2
-    var shim2 = new Shim('#example2 .overlay').sync();
+    var shim2 = new Shim('#example2 .overlay')
+    shim2.sync();
 
     $('#example2 input').blur(function(e){
         var value = e.currentTarget.value;
