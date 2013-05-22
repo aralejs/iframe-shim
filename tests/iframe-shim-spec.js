@@ -6,7 +6,7 @@ define(function(require) {
 
     describe('iframe-shim', function() {
 
-        var div, isIE6 = $.browser.msie && $.browser.version === '6.0';
+        var div, isIE6 = (window.navigator.userAgent || '').toLowerCase().indexOf('msie 6') !== -1;
 
         beforeEach(function() {
             div = $('<div></div>').appendTo(document.body);

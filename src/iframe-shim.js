@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Position = require('position');
 
+    var isIE6 = (window.navigator.userAgent || '').toLowerCase().indexOf('msie 6') !== -1;
 
     // target 是需要添加垫片的目标元素，可以传 `DOM Element` 或 `Selector`
     function Shim(target) {
@@ -51,7 +52,7 @@ define(function(require, exports, module) {
         delete this.target;
     };
 
-    if ($.browser.msie && $.browser.version === '6.0') {
+    if (isIE6) {
         module.exports = Shim;
     } else {
         // 除了 IE6 都返回空函数
