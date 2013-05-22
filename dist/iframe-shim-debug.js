@@ -1,6 +1,7 @@
-define("arale/iframe-shim/1.0.1/iframe-shim-debug", [ "$-debug", "arale/position/1.0.0/position-debug" ], function(require, exports, module) {
+define("arale/iframe-shim/1.0.2/iframe-shim-debug", [ "$-debug", "arale/position/1.0.0/position-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     var Position = require("arale/position/1.0.0/position-debug");
+    var isIE6 = (window.navigator.userAgent || "").toLowerCase().indexOf("msie 6") !== -1;
     // target 是需要添加垫片的目标元素，可以传 `DOM Element` 或 `Selector`
     function Shim(target) {
         // 如果选择器选了多个 DOM，则只取第一个
@@ -39,12 +40,14 @@ define("arale/iframe-shim/1.0.1/iframe-shim-debug", [ "$-debug", "arale/position
         }
         delete this.target;
     };
-    if ($.browser.msie && $.browser.version === "6.0") {
+    if (isIE6) {
         module.exports = Shim;
     } else {
         // 除了 IE6 都返回空函数
         function Noop() {}
-        Noop.prototype.sync = Noop;
+        Noop.prototype.sync = function() {
+            return this;
+        };
         Noop.prototype.destroy = Noop;
         module.exports = Noop;
     }
