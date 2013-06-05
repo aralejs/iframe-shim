@@ -8,6 +8,8 @@
 
 `tag:improved` 去除 $.browser 的依赖
 
+`tag:improved` 升级 position 到 1.0.1
+
 ### 1.0.1
 
 `tag:fixed` [#2](https://github.com/aralejs/iframe-shim/issues/2) 修复被遮挡元素设置了z-index导致的问题
