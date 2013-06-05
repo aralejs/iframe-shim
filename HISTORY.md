@@ -2,9 +2,15 @@
 
 ---
 
+### 1.0.2
+
+`tag:fixed` [#3](https://github.com/aralejs/iframe-shim/issues/3) 修复除 ie6 下，sync 链式调用的问题
+
+`tag:improved` 去除 $.browser 的依赖
+
 ### 1.0.1
 
-`tag:fixed` 修复被遮挡元素设置了z-index导致的问题 #2
+`tag:fixed` [#2](https://github.com/aralejs/iframe-shim/issues/2) 修复被遮挡元素设置了z-index导致的问题
 
 ### 1.0.0
 

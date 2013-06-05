@@ -6,7 +6,7 @@ define(function(require) {
 
     describe('iframe-shim', function() {
 
-        var div, isIE6 = $.browser.msie && $.browser.version === '6.0';
+        var div, isIE6 = (window.navigator.userAgent || '').toLowerCase().indexOf('msie 6') !== -1;
 
         beforeEach(function() {
             div = $('<div></div>').appendTo(document.body);
@@ -134,5 +134,12 @@ define(function(require) {
                 expect(shim3.iframe[0].style.zIndex).to.be(1);
             }
         });
+
+        it('sync should chained call', function() {
+            var target = $('<div></div>').css({'width': '100px', 'height': '100px'}).appendTo(div);
+            var shim = new Shim(target[0]);
+
+            expect(shim.sync()).to.be(shim);
+        })
     });
 });
