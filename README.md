@@ -70,3 +70,7 @@ shim.sync(); // 在 target 显示之后，再同步 shim 的显示。
 实例方法，销毁 iframe 等。
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aralejs/iframe-shim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
