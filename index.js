@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var Position = require('arale-position');
+var Position = require('position');
 
 var isIE6 = (window.navigator.userAgent || '').toLowerCase().indexOf('msie 6') !== -1;
 
