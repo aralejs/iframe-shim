@@ -55,7 +55,7 @@
 
 
 ````javascript
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+seajs.use(['index', 'jquery'], function(Shim, $){
     // example1
     new Shim('#example1 .overlay').sync();
 });
@@ -97,7 +97,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 </div>
 
 ````javascript
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+seajs.use(['index', 'jquery'], function(Shim, $){
     //example2
     var shim2 = new Shim('#example2 .overlay')
     shim2.sync();
@@ -159,7 +159,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 </div>
 
 ````javascript
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+seajs.use(['index', 'jquery'], function(Shim, $){
     // example3
     new Shim('#example3 .overlay').sync();
 });
@@ -195,7 +195,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 </div>
 
 ````javascript
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+seajs.use(['index', 'jquery'], function(Shim, $){
     // example4
     var shim4 = new Shim('#example4 .overlay');
     $('#example4-create').click(function(e){
@@ -231,7 +231,7 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 </div>
 
 ````javascript
-seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+seajs.use(['index', 'jquery'], function(Shim, $){
     // example1
     new Shim('#example5 .overlay').sync();
 });
